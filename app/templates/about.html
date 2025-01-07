@@ -1,0 +1,70 @@
+{% extends "layout/base.html" %}
+{% load static %}
+{% block title %} About Us{% endblock %}
+
+{% block content %}
+
+<section class="relative h-screen overflow-hidden">
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+        <source src="{% static 'video/video.mp4' %}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="relative z-10 bg-black bg-opacity-50 h-full overflow-y-auto">
+        <div class="container mx-auto px-6 lg:px-20 py-12">
+            <!-- Heading Section -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-white mb-4">About Us</h1>
+                <p class="text-lg text-gray-200">Learn more about who we are and what we stand for.</p>
+            </div>
+
+            <!-- Content Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Image Section -->
+                <div class="relative">
+                    <img src="{% static 'img/e-commerce.jpg' %}" alt="About Us Image" class="w-full rounded-lg shadow-lg object-cover">
+                    <div class="absolute inset-0 bg-blue-500 bg-opacity-10 rounded-lg"></div>
+                </div>
+
+                <!-- Text Section -->
+                <div>
+                    <h2 class="text-2xl font-bold text-white mb-4">Who We Are</h2>
+                    <p class="text-gray-200 mb-6">Our e-commerce platform is built on a passion for connecting customers with high-quality products. We strive to provide an exceptional shopping experience that combines convenience, affordability, and a commitment to excellence.</p>
+
+                    <h2 class="text-2xl font-bold text-white mb-4">Our Mission</h2>
+                    <p class="text-gray-200">To be the leading online marketplace that empowers customers and vendors alike, fostering a community of trust, innovation, and sustainability.</p>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="mt-16">
+                <h2 class="text-3xl font-bold text-white text-center mb-8">Meet Our Team</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member -->
+                    <div class="text-center">
+                        <img src="{% static 'img/pro1.jpg' %}" alt="Team Member" class="w-24 h-24 mx-auto rounded-full shadow-md object-cover mb-4">
+                        <h3 class="text-lg font-bold text-white">John Doe</h3>
+                        <p class="text-sm text-gray-300">CEO</p>
+                    </div>
+                    <!-- Repeat for more team members -->
+                    <div class="text-center">
+                        <img src="{% static 'img/pro2.jpg' %}" alt="Team Member" class="w-24 h-24 mx-auto rounded-full shadow-md object-cover mb-4">
+                        <h3 class="text-lg font-bold text-white">Jane Smith</h3>
+                        <p class="text-sm text-gray-300">CTO</p>
+                    </div>
+                    <!-- Add as needed -->
+                </div>
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="mt-16 text-center">
+                <h2 class="text-2xl font-bold text-white mb-4">Join Our Journey</h2>
+                <p class="text-gray-200 mb-6">We are more than a marketplace. We are a family. Become part of our growing community and experience the difference today.</p>
+                <a href="/contact" class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 transition">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

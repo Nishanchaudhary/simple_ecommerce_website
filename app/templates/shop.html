@@ -1,0 +1,64 @@
+{% extends "layout/base.html" %}
+
+{% block title %}Shop {% endblock %}
+
+{% block content %}
+<section class="relative bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 py-8">
+    <div class="container mx-auto px-4">
+        <!-- Page Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0">
+            <h2 class="text-4xl font-bold text-gray-800 tracking-wide">Shop</h2>
+            <!-- Sort Dropdown -->
+            <form method="get" class="flex items-center space-x-4">
+                <label for="sort" class="text-gray-700 text-lg font-medium">Sort by:</label>
+                <select name="sort" id="sort" class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition ease-in-out duration-150" onchange="this.form.submit()">
+                    <option value="price_asc">Price: Low to High</option>
+                    <option value="price_desc">Price: High to Low</option>
+                    <option value="name_asc">Name: A to Z</option>
+                    <option value="name_desc">Name: Z to A</option>
+                </select>
+            </form>
+        </div>
+        
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for product in products %}
+            <!-- Product Card -->
+            <div class="bg-gray-800 text-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <div class="relative group">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover transform group-hover:scale-105 transition-transform duration-300" />
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <p class="text-white text-sm font-semibold">View Details</p>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <h3 class="text-lg font-bold text-white mb-2 truncate">{{ product.name }}</h3>
+                    <p class="text-sm text-white mb-4">{{ product.description|truncatewords:10 }}</p>
+                    <div class="flex justify-between items-center mb-4">
+                        <p class="text-lg font-bold text-white">Rs {{ product.price }}</p>
+                        <button class="px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> "
+            
+        <!-- Pagination -->
+        <div class="mt-10">
+            <nav class="flex justify-center items-center space-x-3">
+                {% if products.has_previous %}
+                <a href="?page={{ products.previous_page_number }}" class="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition">Previous</a>
+                {% endif %}
+                <span class="px-4 py-2 bg-blue-500 text-white font-bold rounded-md">{{ products.number }}</span>
+                {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}" class="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition">Next</a>
+                {% endif %}
+            </nav>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

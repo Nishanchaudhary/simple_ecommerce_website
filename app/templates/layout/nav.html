@@ -1,0 +1,100 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django_Tailwind</title>
+    {% tailwind_css %}
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="relative bg-gradient-to-r from-blue-200 via-blue-300 to-blue-400 shadow fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-gray-800">
+                Myshop
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="{% url 'home' %}"
+                    class="text-gray-700 font-bold text-xl hover:text-blue-500 transition">Home</a>
+                <a href="{% url 'shop' %}"
+                    class="text-gray-700 font-bold text-xl hover:text-blue-500 transition">Shop</a>
+                <a href="{% url 'about' %}" class="text-gray-700 font-bold text-xl hover:text-blue-500 transition">About</a>
+                <a href="{% url 'contact' %}" class="text-gray-700 font-bold text-xl hover:text-blue-500 transition">Contact</a>
+            </div>
+
+            <!-- Icons -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#" class="relative text-gray-700 hover:text-blue-500 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 3h2l.4 2M7 13h10l3.4-8H5.4M7 13l-2 5h13M7 13l3-5M17 13l-3-5M7 18a2 2 0 110 4 2 2 0 010-4zm10 0a2 2 0 110 4 2 2 0 010-4z" />
+                    </svg>
+                    <!-- Cart Badge -->
+                    <span
+                        class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                        0
+                    </span>
+                </a>
+
+                <button
+                    class="text-gray-50 rounded-lg pt-2 pb-2 px-2 py-2 hover:bg-slate-100 w-16 h-11 font-bold bg-slate-600 border-2 hover:text-blue-500 text-lg">Login</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-700 hover:text-blue-500 focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="{% url 'home' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Home</a>
+            <a href="{% url 'shop' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Shop</a>
+            <a href="{% url 'about' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">About</a>
+            <a href="{% url 'contact' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Contact</a>
+            <a href="#" class="relative text-gray-700 hover:text-blue-500 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l3.4-8H5.4M7 13l-2 5h13M7 13l3-5M17 13l-3-5M7 18a2 2 0 110 4 2 2 0 010-4zm10 0a2 2 0 110 4 2 2 0 010-4z" />
+                </svg>
+                <!-- Cart Badge -->
+                <span
+                    class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                    0
+                </span>
+            </a>
+
+            <button
+                class="text-gray-50 rounded-lg pt-2 pb-2 px-2 py-2 hover:bg-slate-100 w-24 h-11 font-bold bg-slate-600 border-2 hover:text-blue-500 text-lg">Login</button>
+        </div>
+    </div>
+</nav>
+
+   
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuButton.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+
+</html>
