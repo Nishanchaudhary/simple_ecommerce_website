@@ -19,9 +19,10 @@ Welcome to the **Simple E-Commerce Website** repository. This project is a basic
 
 ```plaintext
 simple_ecommerce_website/
-├── ecommerce/        
-├── templates/        
-├── static/            
+├── Django_taiulwindcss_pro/     
+├── app/        
+├── products/        
+├── theme/           
 ├── db.sqlite3        
 └── manage.py         
 ```
